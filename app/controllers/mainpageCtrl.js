@@ -1,9 +1,15 @@
 app.controller("mainpageCtrl", ["US", function (US) {
     var vm = this;
-    vm.PhotoChange = function () {
-        vm.phurl = "" + US.getUsers()[US.getNumber].photourl + "";
-    };
-    vm.PhotoChange();
+    
+   document.getElementById("image").style.background="url("+US.getUsers()[US.getNumber].photourl+")";  
+    
+//    vm.PhotoChange = function () {
+//       
+//        vm.phurl = "" + US.getUsers()[US.getNumber].photourl + "";
+//       console.log(vm.phurl)
+//        
+//    };
+//    vm.PhotoChange();
     vm.user = {};
     vm.allUsers = [];
     vm.allUsers = US.getUsers();
@@ -33,9 +39,38 @@ app.controller("mainpageCtrl", ["US", function (US) {
                 vm.user.friends.splice(i, 1);
             }
     }
-    document.querySelector('#myfile').onchange = function () {
-        vm.url = "image/" + this.files[0].name;
-        US.changePhoto(US.getNumber, vm.url);
-        vm.PhotoChange();
-    }
+//    document.querySelector('#myfile').onchange = function () {
+//        vm.url = "image/" + this.files[0].name;
+//        
+//        US.changePhoto(US.getNumber, vm.url);
+//     //vm.PhotoChange();
+//        console.log(vm.user.photourl)
+//        
+//    }
+    
+    
+  document.querySelector('#myfile').onchange =  function() {
+  
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+ 
+  US.getUsers()[US.getNumber].photourl= reader.result; console.log(US.getUsers()[US.getNumber].photourl);   
+ document.getElementById("image").style.background="url("+US.getUsers()[US.getNumber].photourl+")";    
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  };
+
+      
+}
+    
+    
+    
+
+    
+    
+    
 }])

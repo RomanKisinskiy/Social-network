@@ -9,8 +9,10 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-xs-4"> <img ng-src="{{mainpage.phurl}}" class="img-thumbnail">
-            <h3>{{mainpage.phurl}}</h3>
+        <div class="col-xs-4"> 
+<!--        <img ng-src="{{mainpage.user.photourl}}" class="img-thumbnail">-->
+            <div id="image"></div>      
+            <h3>{{mainpage.user.photourl}}</h3>
             <label class="btn btn-xs btn-primary btn-file btn-block"> Change Photo
                 <input type="file" style="display: none;" id="myfile"> </label>
             <h3>Friends:</h3>

@@ -8,6 +8,7 @@ app.controller("registrationCtrl", ["US", function (US) {
             newUser.password = vm.Ps;
             newUser.chat = [];
             newUser.friends = [];
+            newUser.photourl = "image/avatar.jpeg";
             US.getUsers().push(newUser);
             vm.z = "#myModal";
         }
